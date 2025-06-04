@@ -62,8 +62,8 @@ dependencies {
 tasks.withType(Test).configureEach {
     systemProperties(System.getProperties())
     useJUnitPlatform()
-    systemProperty "USERNAME", System.getProperty("USERNAME", "")
-    systemProperty "PASSWORD", System.getProperty("PASSWORD", "")
+    systemProperty "USERNAME", System.getProperty("username", "")
+    systemProperty "PASSWORD", System.getProperty("password", "")
     systemProperty "BOOKISBN", System.getProperty("BOOKISBN", "")
     def threads = System.getProperty("threads", "1").toInteger()
     systemProperties += [
