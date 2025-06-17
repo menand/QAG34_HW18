@@ -1,13 +1,10 @@
 package api;
 
-import io.restassured.response.Response;
-import models.UserBooksResponseModel;
-
 import static io.restassured.RestAssured.given;
 import static specs.Specs.request;
 import static specs.Specs.response;
 
-public class BooksAPI {
+public class BookStoreApiSteps {
 
     public static void deleteAllBooks(String token, String userId) {
         given(request)
@@ -45,15 +42,5 @@ public class BooksAPI {
                 .spec(response(204));
     }
 
-    public static UserBooksResponseModel getUserBooks(String token, String userId) {
-        Response response = given(request)
-                .header("Authorization", "Bearer " + token)
-                .when()
-                .get("/account/v1/user/" + userId)
-                .then()
-                .spec(response(200))
-                .extract().response();
 
-        return response.as(UserBooksResponseModel.class);
-    }
 }
